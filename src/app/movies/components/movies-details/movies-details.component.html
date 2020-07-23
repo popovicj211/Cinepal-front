@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="detailMovie"> 
+            <div class="detailAll col-sm-6"> 
+                        <img  src="{{urlImg}}" alt="{{movie?.name}}" >
+            </div>                       
+             <div class="detailAll col-sm-6"> 
+                       <h3 class="colorOrange"> {{ movie?.name}} </h3>  
+                        <p class="detailDesc styleText colorOrangeOp"> {{ movie?.desc }} </p>
+                        <p class="colorOrangeOp">   Year of movie: {{ movie?.year }}  </p>
+                        <p  class="colorOrangeOp">  Release date: {{ movie?.rel | date: 'dd/MM/yyyy H:m' }}  </p>
+                        <div class="detailCatRow" >
+                             <div class="detailCatCol"> 
+                                 <p class="detailCat colorOrange"> Categories </p>
+                                 <div class="detailListCat" *ngFor="let cat of categories">
+                                        <span class="optionCat colorWhiteOp"> {{ cat.value }} </span>
+                                </div>
+                           </div>
+                           <div class="detailCatCol">
+                             <p class="detailCat colorOrange"> Actors </p> 
+                             <div class="detailListCat" *ngFor="let actor of actors">
+                                      <span class="optionCat colorWhiteOp"> {{ actor.value }} </span>
+                             </div>
+                         </div>
+                         <div class="detailCatCol">
+                            <p class="detailCat colorOrange"> Tehnologies </p> 
+                             <div class="detailListCat" *ngFor="let tehnology of tehnologies">
+                                      <span class="optionCat colorWhiteOp"> {{ tehnology.value }}  </span>
+                             </div>
+                         </div>
+                         <div class="detailCatCol">
+                            <p class="detailCat colorOrange"> Price </p> 
+                             <div class="detailListCat" *ngFor="let price of prices">
+                                      <span class="optionCat colorWhiteOp"> {{ price.value }} &euro;  </span>
+                             </div>
+                         </div>
+                     </div>
+                
+                       <div class="detailReservation">
+                                 <a class="colorWhiteOp" routerLink="/reservation/{{movie?.id}}" > Reservation </a>
+                       </div>
+            </div>
+       </div> 
+    </div>
+</div>

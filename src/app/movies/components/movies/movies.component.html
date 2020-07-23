@@ -1,0 +1,44 @@
+<div class="container-fluid" id="homeMain" >
+    <div class="row"  id="movieMain"> 
+             <div class="col-md-2 kt">
+                       <div class="filterCat">
+                              <h3> Categories: </h3>
+                              <span  *ngFor="let category of categories" > <a  (click)="catFilter(category.id , category.sub)"  routerLink="/movies/categories/{{category.id}}"> {{ category.name }} </a></span>
+                             
+                       </div>
+                       <div class="filterCat " >
+                                <h3> Tehnologies: </h3>
+                                <span *ngFor="let tehnology of tehnologies" > <a (click)="catFilter(tehnology.id , tehnology.sub)"  routerLink="/movies/categories/{{tehnology.id}}" > {{ tehnology.name }} </a>  </span>
+                                 
+                        </div>
+             </div>   
+            <div class="col-md-10">    
+               <div class="row pr">
+                     <div *ngIf="error != ''" class="alert alert-danger mx-auto my-5 " role="alert">
+                            {{ error }} 
+                     </div> 
+                  
+                 <div *ngFor="let movie of allMovies" class=" newMovie">                      
+                        <img  src="{{imgUrl + '' + movie.img}}" alt="{{movie.name}}" >
+                        <h3 class="colorOrange"> {{ movie.name }} </h3>
+                     <p>   Year of movie:  <span class="dateMv">  {{ movie.year }} </span> </p>
+                     <p>  Release date:  <span class="dateMv">  {{ movie.rel | date: 'dd/MM/yyyy H:m' }}  </span> </p>
+                        <p class="cat"> Categories </p>
+                        <div class="listCat" *ngFor="let cat of movie.categories | keyvalue">
+                               <span class="optionCat"> {{ cat.value }} </span>
+                        </div>
+                      <p class="cat"> Tehnologies </p> 
+                        <div class="listCat" *ngFor="let cat of movie.tehnologies | keyvalue">
+                            <span class="optionCat"> {{ cat.value }} </span>
+                       </div>
+                        <div class="details">
+                                <a routerLink="/movie/{{movie.id}}"> Details </a>
+                        </div>
+                 </div> 
+                </div> 
+                <ul class="pagination justify-content-center" >
+                     <li class="page-item" *ngFor="let item of counter(page); let i = index"><a class="page-link colorWhite" routerLink="/movies/page/{{i+1}}"> {{ i + 1 }} </a></li>
+               </ul>
+           </div>      
+   </div> 
+</div>

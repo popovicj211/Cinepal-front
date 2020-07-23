@@ -1,0 +1,119 @@
+
+    <div class="card-body">
+         <form   (ngSubmit)="addMovie()" id="addFormMovie" name="addFormMovie" [formGroup]="addFormMovie" enctype="multipart/form-data">
+
+               <div class="form-group row mb-2">
+                     <label class="col-md-2 col-form-label "
+                          for="movieImage"> Movie image </label>
+                         <div class="col-md-8">
+                                 <div class="custom-file">
+                                      <input   formControlName = "addMovieImage"  id = "addMovieImage"   [ngClass]="{'is-invalid': displayMessage.addMovieImage}"  name = "addMovieImage" type="file" class="custom-file-input" >
+                                      <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                 </div>
+                                 <span class="invalid-feedback">
+                                                    {{displayMessage.addMovieImage}}   
+                                 </span>
+                         </div>
+                 </div>
+
+                  <div class="form-group row mb-2">
+                            <label class="col-md-2 col-form-label"
+                              for="movieName">Movie Name</label>
+                             <div class="col-md-8">
+                                       <input class="form-control"
+                                        id = "addMovieName"
+                                        name = "addMovieName"
+                                        type = "text"
+                                          placeholder = "Movie name (required)"
+                                       formControlName = "addMovieName"
+                                            [ngClass]="{'is-invalid': displayMessage.addMovieName}"  />
+                                      <span class="invalid-feedback">
+                                                   {{displayMessage.addMovieName}} 
+                                         
+                                      </span>
+                              </div>
+                   </div>
+
+                   <div class="form-group row mb-2">
+                           <label class="col-md-2 col-form-label"
+                           for="movieDesc">Movie Description</label>
+                            <div class="col-md-8">
+                                     <textarea  class="form-control"  id = "addMovieDesc"  name = "addMovieDesc"  placeholder = "Movie description (required)"   [ngClass]="{'is-invalid': displayMessage.addMovieDesc}"  formControlName = "addMovieDesc"  ></textarea>
+                                     <span class="invalid-feedback">
+                                                    {{displayMessage.addMovieDesc}}
+                                    </span>
+                           </div>
+                  </div>
+
+                   <div class="form-group row mb-2">
+                            <label class="col-md-2 col-form-label"
+                            for="movieYear">Year</label>
+
+                           <div class="col-md-8">
+                                   <select class="form-control"  id = "addMovieYear"   [ngClass]="{'is-invalid': displayMessage.addMovieYear}" name = "addMovieYear" formControlName="addMovieYear"  >
+                                                     <option *ngFor="let year of years"  value="{{year.id}}" >{{ year.year }}  </option>
+                                  </select>
+                                    <span class="invalid-feedback">
+                                                               {{displayMessage.addMovieYear}}
+                                    </span>
+                           </div>
+                   </div>
+
+                   <div class="form-group row mb-2">
+                                 <label class="col-md-2 col-form-label"
+                                  for="movieReleaseDate">Movie release date</label>
+                                        <div class="col-md-8 datetimerels"  >
+                                                <ngb-datepicker class="reldateAddMovie"  id = "addMovieReldate"  name = "addMovieReldate" formControlName="addMovieReldate"  #dp (navigate)="date = $event.next" ></ngb-datepicker>
+                                                <ngb-timepicker   id = "addMovieReltime" class="addMovieReltimeStyle"  name = "addMovieReltime"  formControlName="addMovieReltime"></ngb-timepicker>
+                                                <span class="invalid-feedback">
+                                                             {{displayMessage.addMovieReldate}}
+                                                             {{displayMessage.addMovieReltime}}
+                                                 </span>
+                                        </div>
+                 </div>  
+                     
+                  <div class="form-group row mb-4">
+                              <label class="col-md-1 col-form-label"
+                               for="movieGenre">Genres:</label>
+                            <div class="col-md-1" >
+                           
+                                  <span *ngFor="let genre of categories"  formArrayName="checkArrayGenre">
+                                            <input  type="checkbox" class="form-check-input"  name="addMovieGenre[]" id="addMovieGenre{{genre.id}}"   (change)="onCheckboxChange($event,'checkArrayGenre')"    [value]="genre.id" > <p> {{genre.name}} </p>
+                                  </span>  
+
+                                    <span class="invalid-feedback">
+                                                     {{displayMessage.checkArrayGenre}}
+                                   </span> 
+                           </div>
+
+                           <label class="col-md-1 col-form-label"
+                           for="movieTehno">Tehnologies:</label>
+                           <div class="col-md-1" >
+                                     <span *ngFor="let tehno of tehnologies" formArrayName="checkArrayTehno">
+                                             <input  type="checkbox" class="form-check-input" name="addMovieTehno[]" id="addMovieTehno{{tehno.id}}" (change)="onCheckboxChange($event, 'checkArrayTehno')"  [value]="tehno.id" > <p> {{tehno.name}} </p>
+                                    </span>  
+                                     <span class="invalid-feedback">
+                                                 {{displayMessage.checkArrayTehno}}
+                                      </span>
+                          </div>
+
+                          <label class="col-md-1 col-form-label"
+                          for="movieActor">Actors:</label>
+
+                         <div class="col-md-1" >
+                                   <span *ngFor="let actor of actors" formArrayName="checkArrayActor">
+                                           <input  type="checkbox" class="form-check-input" name="addMovieActor[]" id="addMovieActor{{actor.id}}" (change)="onCheckboxChange($event, 'checkArrayActor')"  [value]="actor.id" > <p> {{actor.name}} </p>
+                                  </span>  
+                                   <span class="invalid-feedback">
+                                               {{displayMessage.checkArrayActor}}
+                                    </span>
+                        </div>
+
+                  </div>  
+                    <div class="form-group row mb-2"> 
+                                    <button type="submit" name="addMoveBtn" id="addMoveBtn"  [title]="addFormMovie.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!addFormMovie.valid" class="btn btn-outline-light" > Save </button>
+                   </div>
+
+       </form>
+     </div>
+  

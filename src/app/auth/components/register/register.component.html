@@ -1,0 +1,55 @@
+
+<div class="container pr">
+        <h2 class="colorOrange">Register</h2>
+    <div class="row justify-content-center">
+     <form class="col s12" [formGroup]="registerForm" (ngSubmit)="register();">
+         <div class="row">
+                <div class="input-field col s12 mt-2">
+                        <label for="name">First name and Last name</label>
+                      <input formControlName="name" class="form-control" id="regName" type="text" [ngClass]="{'is-invalid': displayMessage.name}">
+                      <span class="invalid-feedback">
+                                    {{displayMessage.name}}
+                     </span>
+              </div>
+       </div>
+        <div class="row">
+             <div class="input-field col s12 mt-2">
+                     <label for="username">Username</label>
+                     <input formControlName="username" class="form-control" id="regUsername" type="text" [ngClass]="{'is-invalid': displayMessage.username}" >
+                    <span class="invalid-feedback">
+                               {{displayMessage.username}}
+                   </span>
+            </div>
+      </div>
+      <div class="row">
+            <div class="input-field col s12 mt-2">
+                    <label for="email">Email address</label>
+                   <input formControlName="email" class="form-control" id="regEmail" type="text" [ngClass]="{'is-invalid': displayMessage.email}" >
+                   <span class="invalid-feedback">
+                              {{displayMessage.email}}
+                   </span>
+           </div>
+      </div>
+      <div class="row">
+           <div class="input-field col s12 mt-2">
+                <label for="password">Password</label>
+                 <input formControlName="password" class="form-control" id="regPassword" type="password" [ngClass]="{'is-invalid': displayMessage.password}" >
+                 <span class="invalid-feedback">
+                             {{displayMessage.password}}
+                  </span>
+          </div>
+     </div>
+       <button [disabled]="!registerForm.valid" class="btn btn-outline-light mt-2" name="regBtn" id="regBtn" type="submit">
+           SignUp
+      </button>
+   </form>
+   <div *ngIf="message != '' ">
+        <div *ngIf="success == true " class="alert alert-success mt-3" role="alert">
+                    <p>   {{ message }} </p> 
+       </div>
+       <div *ngIf="success == false " class="alert alert-danger mt-3" role="alert">
+                          <p> {{ message }} </p>
+       </div>
+   </div>
+  </div>
+</div>

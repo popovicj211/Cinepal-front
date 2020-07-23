@@ -1,0 +1,46 @@
+.detailMovie img {
+         width: 350px;
+        margin: 20px 10px;
+}
+.detailMovie .detailAll{
+     float: left;
+     margin-top: 20px;
+}
+.detailMovie .detailAll .detailCatRow .detailCatCol .detailCat{
+    letter-spacing: 1px;
+     font-size: 25px;
+}
+
+.detailMovie .detailAll .detailCatRow .detailCatCol .detailListCat {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    text-indent: 1pc;
+ }
+ .detailMovie .detailAll .detailCatRow .detailCatCol{
+     margin: 6px;
+ }
+
+ .detailMovie .detailAll .detailCatRow  {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+ }
+
+ .detailMovie .detailAll .detailReservation {
+      border-radius: 5px;
+      border: 2px solid  #fa2837;
+      background-color: transparent;
+      width: 100px;
+      padding: 7px;
+      margin-top: 20px;
+ }
+
+ .detailMovie .detailAll .detailReservation:hover {
+        background-color: #fa2837;
+ }
+

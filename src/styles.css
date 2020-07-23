@@ -1,0 +1,174 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px; 
+  /*  background-color: #000;*/
+    background-image: url('assets/images/bg_4.jpg') ;
+  }
+  
+ p{
+   color: #f8f8ff;
+ } 
+
+a  {
+    text-decoration: none;
+    color: #000;
+}
+a:hover , .btnLink:hover{
+    text-decoration: none;
+   color: #f8f8ff;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+h1,h2,h3,h4,h5{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.error-text{
+  color: #ff0000;
+}
+
+::-webkit-scrollbar {
+    width: 5px;;
+    height: 5px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #ff0000;
+  }
+
+  .pagination .page-item a{
+    background-color: transparent !important;
+    border: 1px solid #ff4500;
+  }
+
+  label{
+    color: #fff;
+  }
+
+  .styleText{
+      text-align: justify;
+  }
+
+  .colorOrange{
+      color: #ff4500;
+  }
+  .colorWhite{
+    color: #f8f8ff;
+}
+  .colorWhiteOp{
+    color: #f8f8ff;
+    opacity: 0.7;
+}
+
+.colorOrangeOp{
+  color: #ff4500;
+  opacity: 0.8;
+}
+
+/*
+  input[type=text],  textarea , {
+                background-color: transparent;
+                border:1px solid #ff4500;
+  }*/
+
+ .form-control, .custom-file-label{
+  border:1px solid #ff4500;
+  background-color: transparent;  
+ }
+
+ .form-control:focus{
+       background: transparent;
+       border:1px solid #fff;
+ }
+
+ button[type=submit]{
+   /* margin-left: 50em;*/
+   margin-right: 1em;
+ }
+
+ .newMovie{
+  /*  width: 280px;*/
+    width: 297px;
+   margin:50px 10px;
+   background-color: transparent;
+   padding: 12px;
+   border-radius: 5px;
+  border: 1px solid #ff4500;
+}
+
+.newMovie > h3{
+  text-align: center;
+  font-size: 20px;
+  margin-top:10px;
+/*  color: #ff4500;*/
+}
+
+.newMovie > img {
+  border-radius: 5px;
+  margin: 4px;
+}
+
+.newMovie > p {
+  color: #f8f8ff;
+}
+
+.dateMv{
+  padding: 7px;
+  background-color: #ff0000;
+  border-radius: 5px;
+ margin-top: 20px;
+}
+
+
+.listCat {
+   display: inline-flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: flex-start;
+
+}
+
+.listCat span {
+  margin: 5px 2px;
+  padding: 2px 10px;
+  border-right: 1px solid #ff4500;
+  color: #f8f8ff
+}
+
+.listCat:last-child > span{
+
+ border-right: none;
+}
+
+.cat{
+ text-align: center;
+}
+
+.details{
+  width: 100%;
+  padding: 10px;
+   background-color: #fa2837;
+  border-radius: 0px 0px 5px 5px ;
+}
+
+.details > a {
+    text-transform: uppercase;
+    margin-left: 6em;
+}
+
+.pr {
+   margin-top: 50px;
+}
+
+.alert-success{
+       background-color: #ff4500;
+}

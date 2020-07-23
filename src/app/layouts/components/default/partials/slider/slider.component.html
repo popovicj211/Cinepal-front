@@ -1,0 +1,28 @@
+<div class="slider">
+    <!--  <img src="assets/images/slider.jpg" alt="Slider" /> -->
+         <div class="slider-block">
+                      <h2>  </h2>
+         </div>
+
+   <ngb-carousel *ngIf="slides">
+    <ng-template ngbSlide *ngFor="let img of slides">
+      <div class="picsum-img-wrapper">
+        <img src="assets/images/{{img.img}}" alt="{{ img.header}}">
+      </div>
+      <div class="carousel-caption slider-block">
+        <h2>{{ img.header}}</h2>
+       <p class="styleText"> {{ img.text }} </p>
+      </div>
+    </ng-template>
+  <!--  <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img [src]="images[1]" alt="Random second slide">
+      </div>
+      <div class="carousel-caption slider-block">
+        <h2>Second slide label</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template> -->
+
+   </ngb-carousel>  
+</div>

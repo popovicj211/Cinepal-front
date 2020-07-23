@@ -1,0 +1,55 @@
+<div class="container pr">
+    <h2 class="colorOrange"> Contact </h2>
+<div class="row justify-content-center">
+ <form class="col s12" [formGroup]="contactForm" (ngSubmit)="contact();">
+     <div class="row">
+            <div class="input-field col s12 mt-2">
+                    <label for="name">Name</label>
+                  <input formControlName="contName" class="form-control" id="contName" type="text" [ngClass]="{'is-invalid': displayMessage.contName} ">
+                  <span class="invalid-feedback">
+                        {{displayMessage.contName}}
+                 </span>
+          </div>
+   </div>
+  <div class="row">
+        <div class="input-field col s12 mt-2">
+                <label for="email">Email address</label>
+               <input formControlName="contEmail" class="form-control" id="contEmail" type="text" [ngClass]="{'is-invalid': displayMessage.contEmail}" >
+               <span class="invalid-feedback">
+                      {{displayMessage.contEmail}}
+              </span>
+       </div>
+  </div>
+  <div class="row">
+       <div class="input-field col s12 mt-2">
+            <label for="subject"> Subject </label>
+             <input formControlName="contSubject" class="form-control" id="contSubject" type="text" [ngClass]="{'is-invalid': displayMessage.contSubject}" >
+             <span class="invalid-feedback">
+                      {{displayMessage.contSubject}}
+            </span>
+      </div>
+ </div>
+ <div class="row">
+    <div class="input-field col s12 mt-2">
+         <label for="message"> Message </label>
+           <textarea  formControlName="contMessage" class="form-control" id="contMessage" [ngClass]="{'is-invalid': displayMessage.contMessage}" >  </textarea>
+           <span class="invalid-feedback">
+                   {{displayMessage.contMessage}}
+          </span>
+    </div>
+</div>
+   <button [disabled]="!contactForm.valid" class="btn btn-outline-light mt-2" name="contBtn" id="contBtn" type="submit">
+       Send
+  </button>
+</form>
+<div *ngIf="message != '' ">
+    <div *ngIf="success == true " class="alert alert-success mt-3" role="alert">
+                 <p> {{ message }}  </p>
+   </div>
+   <div *ngIf="success == false " class="alert alert-danger mt-3" role="alert">
+                       <p>  {{ message }} </p> 
+   </div>
+</div>
+</div>
+</div>
+

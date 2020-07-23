@@ -1,0 +1,28 @@
+<!--<main id="homeMain"> -->
+         <header id="headerHomeSection"> 
+                   <h2 > New Movies </h2>
+        </header>
+        <div class="container-fluid" id="homeMain" >
+             <div class="row"  id="homeMain"> 
+              <div *ngIf="error != ''" class="alert alert-danger mx-auto my-5" role="alert">
+                     {{ error }} 
+              </div>                      
+                          <div *ngFor="let movie of newMovies" class="col-lg-6 col-xl-2 newMovie">                      
+                                <!-- <img class="col-md-12"  src="assets/images/movies/{{movie.img}}" alt="{{movie.name}}" > -->
+                                <img class="col-md-12"  src="{{imgUrl + '' + movie.img}}" alt="{{movie.name}}" >
+                                 <h3 class="colorOrange"> {{ movie.name }} </h3>
+                              <p>   Year of movie:  <span class="dateMv">  {{ movie.year }} </span> </p>
+                              <p>  Release date:  <span class="dateMv">  {{ movie.rel | date: 'dd/MM/yyyy H:m' }}  </span> </p>
+                                 <p class="cat"> Categories </p>
+                                 <div class="listCat" *ngFor="let cat of movie.categories | keyvalue">
+                                        <span class="optionCat"> {{ cat.value }} </span>
+                                 </div>
+                                 <div class="details">
+                                        <a routerLink="/movie/{{movie.id}}"> Details </a>
+                                 </div>
+                                 
+                          </div> 
+            </div> 
+        </div>
+             
+<!--</main> -->
