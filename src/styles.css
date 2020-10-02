@@ -12,7 +12,7 @@ body {
    color: #f8f8ff;
  } 
 
-a  {
+a {
     text-decoration: none;
     color: #000;
 }
@@ -171,4 +171,46 @@ h1,h2,h3,h4,h5{
 
 .alert-success{
        background-color: #ff4500;
+}
+
+.container{
+    padding: 20px;
+}
+
+.admintable , .admintable table tr td, .admintable table tr th{
+  color: #fff;
+}
+.table tr{
+   border-bottom: 2px solid #ff4500;
+}
+.table tr:first-child{
+  border-bottom: 2px solid #fff;
+}
+
+.admintable table tr td img {
+        width: 150px;
+} 
+.admintable table tr td .admindesc{
+  overflow-y:scroll;
+  width: 200px;
+  height: 200px;
+}
+.btn-outline-primary{
+    border: 1px solid #fa2837 !important;
+    color: #fa2837 !important;
+}
+
+.btn-outline-primary:hover{
+  border: 1px solid #fa2837 !important;
+  color: #000 !important;
+  background-color: #fa2837;
+}
+.admin-content-data{
+   padding: 20px;
+}
+.admin-content-data{
+  color: #ff4500;
+}
+.card-body{
+    padding: 20px !important;
 }

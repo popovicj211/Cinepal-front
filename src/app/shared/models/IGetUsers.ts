@@ -14,6 +14,12 @@ export interface LoginCredentials {
     updated_at: string
   }
 
+export interface me{
+      headers: {};
+      original: UserInfo;
+      exception: null;
+}
+
   /*
   export interface LoginResponse {
     token: string;
@@ -29,6 +35,7 @@ export interface LoginCredentials {
   export interface LoginResponse {
     message: string;
     token: TokenInfo;
+    user: me;
   }
 
   export interface RegisterResponse {
@@ -43,3 +50,9 @@ export interface LoginCredentials {
     password: string;
   }
   
+  export interface IGetUser {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+  }

@@ -7,7 +7,7 @@
               <div *ngIf="error != ''" class="alert alert-danger mx-auto my-5" role="alert">
                      {{ error }} 
               </div>                      
-                          <div *ngFor="let movie of newMovies" class="col-lg-6 col-xl-2 newMovie">                      
+                          <div *ngFor="let movie of newMovies" class="col-xs-12 col-md-5 col-xl-2 newMovie">                      
                                 <!-- <img class="col-md-12"  src="assets/images/movies/{{movie.img}}" alt="{{movie.name}}" > -->
                                 <img class="col-md-12"  src="{{imgUrl + '' + movie.img}}" alt="{{movie.name}}" >
                                  <h3 class="colorOrange"> {{ movie.name }} </h3>
@@ -18,7 +18,7 @@
                                         <span class="optionCat"> {{ cat.value }} </span>
                                  </div>
                                  <div class="details">
-                                        <a routerLink="/movie/{{movie.id}}"> Details </a>
+                                        <a routerLink="/movies/movie/{{movie.id}}"> Details </a>
                                  </div>
                                  
                           </div> 

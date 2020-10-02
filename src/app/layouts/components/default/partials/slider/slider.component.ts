@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Router, ActivatedRoute, Params, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Route } from '@angular/compiler/src/core';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class SliderComponent implements OnInit {
 
   private slider: boolean = true
    public slides: IGetSlides[];
+
 
   constructor(private readonly sldiesService: SlidesService, private readonly route: ActivatedRoute ) {
     const id: Observable<string> = route.params.pipe(map(p => p.id));
@@ -32,6 +34,7 @@ export class SliderComponent implements OnInit {
                      this.slides = x;
                    
       })
+
 
 
 }

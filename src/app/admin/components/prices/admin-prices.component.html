@@ -1,0 +1,66 @@
+<!--<div class="card-body">
+    <form   (ngSubmit)="addformPr()" id="addFormCategory" name="addFormPrice" [formGroup]="addFormPrice">
+
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label "
+                 for="addCategory"> Prices </label>
+                <div class="col-md-8">
+                    
+                        <div formArrayName="addPrice">
+                            <div class="form-group row mb-2"
+                                 *ngFor="let tag of addCategory.controls; let i=index">
+                              <label class="col-md-2 col-form-label"
+                                     [attr.for]="i"> Price</label>
+                    
+                              <div class="col-md-8">
+                                <input class="form-control"
+                                       [id]="i"
+                                       type="text"
+                                       placeholder="Price"
+                                       [formControlName]="i"  />
+                              </div>
+                              <button class="col-md-1 btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Delete textbox for price"
+                                      (click)="deletePr(i)">Delete textbox
+                              </button>
+                          </div>
+                          <span class="invalid-feedback">
+                            {{displayMessage.i}}   
+                         </span>
+                     </div>
+                   
+                     <div class="row">
+                            <div class="col-md-2 mb-2">
+                              <button class="btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Add textbox for price"
+                                      (click)="addPr()">Add textbox
+                              </button>
+                            </div>
+                    </div>
+                </div>
+          </div>
+
+         
+             
+               <div class="form-group row mb-2"> 
+                               <button type="submit" name="addPriceBtn" id="addPriceBtn"  [title]="addFormPrice.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!addFormPrice.valid" class="btn btn-outline-light" > Save </button>
+              </div>
+
+  </form>
+     <div class="admintable">
+           <table>
+                   <tr>
+                          <th> ID </th> 
+                          <th> Prices </th> 
+                           <th> Edit </th>
+                           <th>  Delete </th>
+                          
+                   </tr>
+               
+           </table>    
+      
+     </div>
+     
+</div>-->

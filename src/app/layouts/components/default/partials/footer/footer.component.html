@@ -1,3 +1,37 @@
-<footer id="footer">
+  <footer id="footer">
+    <div class="container">
+       <div  class="row" >
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <h3> Author </h3>
+            <img  [@imgover]=currentState  (mouseenter)="changeState()"  class="authorF" src="assets/images/author2.jpg" alt="Author"/>   <h6>Jovan Popović 60/16</h6> <p> I finished third year ICT College of Vocational Studies, in Belgrade, Serbia. I chose course Internet tehnology because i like creating websites. I'm researching some things for making websites with java script and php programming languages. </p>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <h3>Links</h3>
+            <ul class="list-group">
+                <li *ngFor="let link of links" > <a class="list-group-item" [routerLink]="link.path" > {{ link.name }}  </a> </li>
+            </ul>
+        </div>
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <h3>Contact </h3>
+            <p> <i class="material-icons tiny">room</i>Zdravka Celara 16</p>
+            <p> <i class="material-icons tiny">email</i> <a href="mailto:jovan.popovic.60.16@ict.edu.rs"> jovan.popovic.60.16@ict.edu.rs </a> </p>
+  
+            <p class="social_icons">
+                <a href="http://twitter.com"> <i class="fab fa-twitter" style="color: #2c7baf;"  ></i> </a>
+                <a href="https://facebook.com"> <i class="fab fa-facebook-f" style="color: #2c7baf;" ></i> </a>
+                <a href="	www.plus.google.com"> <i class="fab fa-google-plus-g" style="color: #2c7baf;" ></i> </a>
+            </p>
+        </div>
+    
+        <div>
+            <span class="container">
+                <div class="row-fluid">
+                    <p class="copyright"> Copyright &copy; {{ year }} by  <a href="https://github.com/popovicj211/"> Jovan Popović  </a> , All rights reserved </p>
+                </div>  
+            </span>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-</footer>
+    

@@ -4,7 +4,7 @@
  <form class="col s12" [formGroup]="contactForm" (ngSubmit)="contact();">
      <div class="row">
             <div class="input-field col s12 mt-2">
-                    <label for="name">Name</label>
+                    <label for="contName">Name</label>
                   <input formControlName="contName" class="form-control" id="contName" type="text" [ngClass]="{'is-invalid': displayMessage.contName} ">
                   <span class="invalid-feedback">
                         {{displayMessage.contName}}
@@ -13,7 +13,7 @@
    </div>
   <div class="row">
         <div class="input-field col s12 mt-2">
-                <label for="email">Email address</label>
+                <label for="contEmail">Email address</label>
                <input formControlName="contEmail" class="form-control" id="contEmail" type="text" [ngClass]="{'is-invalid': displayMessage.contEmail}" >
                <span class="invalid-feedback">
                       {{displayMessage.contEmail}}
@@ -22,7 +22,7 @@
   </div>
   <div class="row">
        <div class="input-field col s12 mt-2">
-            <label for="subject"> Subject </label>
+            <label for="contSubject"> Subject </label>
              <input formControlName="contSubject" class="form-control" id="contSubject" type="text" [ngClass]="{'is-invalid': displayMessage.contSubject}" >
              <span class="invalid-feedback">
                       {{displayMessage.contSubject}}
@@ -31,7 +31,7 @@
  </div>
  <div class="row">
     <div class="input-field col s12 mt-2">
-         <label for="message"> Message </label>
+         <label for="contMessage"> Message </label>
            <textarea  formControlName="contMessage" class="form-control" id="contMessage" [ngClass]="{'is-invalid': displayMessage.contMessage}" >  </textarea>
            <span class="invalid-feedback">
                    {{displayMessage.contMessage}}

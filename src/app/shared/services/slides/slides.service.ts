@@ -18,7 +18,7 @@ private readonly apiUrl: string = `${environment.apiUrl}`
   constructor(private readonly http: HttpClient) { }
  
   public getSlides(): Observable<IGetSlides[]> {
-    return this.http.get<IGetSlides[]>(`${this.apiUrl}/slidess`);
+    return this.http.get<IGetSlides[]>(`/slidess`);
   }
 
 }

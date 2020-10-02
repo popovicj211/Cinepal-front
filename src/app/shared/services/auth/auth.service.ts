@@ -32,21 +32,21 @@ export class AuthService {
 
 
   public register(register: RegisterUser): Observable<{ message: string }> {
-    return this.http.post<{ message: string }>(`${this.apiUrl}/register`, register);
+    return this.http.post<{ message: string }>(`/register`, register);
   }
 
   public login(login: LoginCredentials): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/auth/login`, login);
+    return this.http.post<LoginResponse>(`/auth/login`, login);
   }
 
   public me(): Observable<UserInfo> {
-    return this.http.post<UserInfo>(`${this.apiUrl}/auth/me` , null);
+    return this.http.post<UserInfo>(`/auth/me` , null);
   }
 
-/*
+
   public logout(): Observable<string> {
     return this.http.post<string>("/auth/logout", undefined);
   }
-*/
+
 
 }

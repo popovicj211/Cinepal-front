@@ -6,7 +6,10 @@ import { RouterModule, Routes } from '@angular/router';
 import {  FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { AdminUsersComponent } from './components/users/admin-users.component';
 import { AdminCategoriesComponent } from './components/categories/admin-categories.component';
-import { MoviesAdminComponent } from './components/movies/movies-admin.component'
+import { MoviesAdminComponent } from './components/movies/movies-admin.component';
+import { AdminActorsComponent } from './components/actors/admin-actors.component';
+import { AdminPricesComponent } from './components/prices/admin-prices.component';
+
 
 const routes: Routes = [
          {
@@ -16,23 +19,45 @@ const routes: Routes = [
                 path: 'users',
                 component: AdminUsersComponent
               },
+               {
+                 path: 'users/page/:page' ,
+                  component: AdminUsersComponent  
+               },
+               {
+                path: 'users/edit/:id',
+                component: AdminUsersComponent
+              },
               {
                 path: 'movies',
                 component: MoviesAdminComponent
               },
+               {
+                 path: 'movies/page/:page' ,
+                  component: MoviesAdminComponent   
+               }
+              ,
               {
                 path: 'categories',
                 component: AdminCategoriesComponent
+              } ,
+              {
+                path: 'actors',
+                component: AdminActorsComponent
               } 
+              ,
+               {
+                 path: 'actors/page/:page' ,
+                  component: AdminActorsComponent  
+               }
              ]
-        },
+        }
       
 ]
 
 
 
 @NgModule({
-  declarations: [AdminComponent, AdminUsersComponent, AdminCategoriesComponent, MoviesAdminComponent],
+  declarations: [AdminComponent, AdminUsersComponent, AdminCategoriesComponent, MoviesAdminComponent, AdminActorsComponent, AdminPricesComponent],
   imports: [
     CommonModule , NgbModule  , FormsModule  , ReactiveFormsModule , RouterModule.forChild(routes)
   ],exports:[

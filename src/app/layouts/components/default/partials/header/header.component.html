@@ -11,17 +11,17 @@
                          </div>
                          <div class="col-md-6 col-xs-12">
                                <nav id="navigation">
-                                  <span *ngFor="let link of links" >  <a [routerLink]="link.path"  >  {{ link.name }} </a> </span> 
+                                  <span *ngFor="let link of links"  >  <a [routerLink]="link.path"  >  {{ link.name }} </a> </span> 
                               <!-- <span> <a routerLink="/" > Home </a> </span>
                                  <span> <a routerLink="/movies" > Movies </a> </span>
                                   <span> <a routerLink="/contact" > Contact </a> </span>
                                   <span> <a routerLink="/admin" > Admin </a> </span> -->
-                                  <div   (mouseover) = "overDropdown(true)" class="dropdown"> <a href="#"> Authentification </a>
+                                  <div   (mouseover) = "overDropdown(true)" class="dropdown" > <a href="#"> Authentification </a>
                                           <ul [ngClass] = "state ? 'subdrpshow' : 'dropdown-content'"  [@ddmenuout]="currentState"  (mouseleave) = "changeState()"  class="dropdown-content">
-                                                 <li> <a routerLink="/auth/signin" >Sign In</a> 
+                                                 <li  *ngIf="auth == true" > <a routerLink="/auth/signin" >Sign In</a> 
                                                  </li>
-                                                 <li>  <a routerLink="/auth/signup">Sign Up</a> </li>
-                                                 
+                                                 <li  *ngIf="auth == true">  <a routerLink="/auth/signup"  >Sign Up</a> </li> 
+                                                 <li  *ngIf="auth == false">  <a href="#" (click) = "Logout()"  > Logout </a> </li> 
                                           </ul>
                                    </div>
                              
@@ -34,4 +34,4 @@
            </div>
 </header>
 <!--<app-slider></app-slider> -->
-<app-slider></app-slider>
+<app-slider *ngIf="showSlider == true"></app-slider>

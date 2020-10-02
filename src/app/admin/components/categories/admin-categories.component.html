@@ -1,1 +1,133 @@
-<p>admin-categories works!</p>
+<div class="card-body">
+          <h2> Add or Update categories and tehnologies </h2>
+    <form   (ngSubmit)="addformCat()" id="addFormCategory" name="addFormCategory" [formGroup]="addFormCategory">
+
+        <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label "
+                 for="addCategory"> Categories </label>
+                <div class="col-md-8">
+                    
+                        <div formArrayName="addCategory">
+                            <div class="form-group row mb-2"
+                                 *ngFor="let tag of addCategory.controls; let i=index">
+                              <label class="col-md-2 col-form-label"
+                                     [attr.for]="i"> Category {{i+1}}</label>
+                    
+                              <div class="col-md-8">
+                                <input class="form-control"
+                                       [id]="i"
+                                       type="text"
+                                       placeholder="Category"
+                                       [formControlName]="i"  />
+                              </div>
+                              <button class="col-md-1 btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Delete textbox for category"
+                                      (click)="deleteCat(i)">Delete textbox
+                              </button>
+                          </div>
+                     </div>
+                   
+                     <div class="row">
+                            <div class="col-md-2 mb-2">
+                              <button class="btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Add textbox for category"
+                                      (click)="addCat()">Add textbox
+                              </button>
+                            </div>
+                    </div>
+                </div>
+          </div>
+
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label "
+                 for="addTehnology"> Tehnologies </label>
+                <div class="col-md-8">
+    
+                        <div formArrayName="addTehnology">
+                            <div class="form-group row mb-2"
+                                 *ngFor="let tag of addTehnology.controls; let i=index">
+                              <label class="col-md-2 col-form-label"
+                                     [attr.for]="i">  Tehnology {{i+1}}</label>
+                    
+                              <div class="col-md-8">
+                                <input class="form-control"
+                                       [id]="i"
+                                       type="text"
+                                       placeholder="Tehnology"
+                                       [formControlName]="i" />
+                              </div>
+                              <button class="col-md-1 btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Delete textbox for tehnology"
+                                      (click)="deleteTehno(i)">Delete textbox
+                              </button>
+                          </div>
+                     </div>
+                     <div class="row">
+                            <div class="col-md-2 mb-2">
+                              <button class="btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Add textbox for tehnology"
+                                      (click)="addTehno()">Add textbox
+                              </button>
+                            </div>
+                    </div>
+                </div>
+          </div>
+             
+               <div class="form-group row mb-2"> 
+                               <button type="submit" name="addCatBtn" id="addCatBtn"  [title]="addFormCategory.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!addFormCategory.valid" class="btn btn-outline-light" > Save </button>
+              </div>
+
+  </form>
+     <div class="table admintable">
+         <div class="mx-auto w-50">   
+            <table class="float-left">
+                   <tr>
+                          <th> # </th> 
+                          <th> Category </th> 
+                           <th> Edit </th>
+                           <th>  Delete </th>
+                          
+                   </tr>
+                    <tr *ngFor="let cat of categories; let i=index">
+                           <td> {{ i+1 }} </td>
+                           <td> {{ cat.name }} </td>
+                           <td>  <button class="btn btn-outline-primary btn-sm" >
+                           Edit
+                         </button> </td>
+                           <td> <button class="btn btn-outline-primary btn-sm">
+                           Delete
+                         </button> </td>
+                    </tr>
+           </table>    
+           <!--<div *ngIf="error != ''" class="alert alert-danger mx-auto my-5 " role="alert">
+                   {{ error }} 
+            </div>-->
+            <table class="float-left">
+                <tr>
+                       <th> # </th> 
+                       <th> Tehnology </th> 
+                        <th> Edit </th>
+                        <th>  Delete </th>
+                       
+                </tr>
+                 <tr *ngFor="let tehno of tehnologies; let i=index">
+                        <td> {{ i+1 }} </td>
+                        <td> {{ tehno.name }} </td>
+                        <td>  <button class="btn btn-outline-primary btn-sm" >
+                        Edit
+                      </button> </td>
+                        <td> <button class="btn btn-outline-primary btn-sm">
+                        Delete
+                      </button> </td>
+                 </tr>
+           </table>
+           <div *ngIf="error != ''" class="alert alert-danger mx-auto my-5 " role="alert">
+                {{ error }} 
+         </div>
+        </div>   
+     </div>
+</div>

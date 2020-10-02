@@ -1,1 +1,65 @@
-<p>reservation works!</p>
+<div class="container pr">
+    <h2 class="colorOrange"> Reservation </h2>
+         <div class="row justify-content-center">
+              <form class="col s12" [formGroup]="reservationForm" (ngSubmit)="reservation();">
+                     <div class="row">
+                             <div class="input-field col s12 mt-2">
+                                  <label for="movie"> Movie </label>
+                                     <select formControlName = "movieId" id="resMovie"   class="form-control" [ngClass]="{'is-invalid': displayMessage.movieId}" >
+                                        <option *ngFor="let i of movies" value="{{i.id}}"> {{ i.name }} </option>
+                                   </select>
+                                    <span class="invalid-feedback">
+                                              {{displayMessage.movieId}}
+                                    </span>
+                            </div>
+                   </div>
+                    <div class="row">
+                          <div class="input-field col s12 mt-2">
+                               <label for="quantity"> Quantity </label>
+                               <select formControlName="qty" class="form-control" id="resQty" [ngClass]="{'is-invalid': displayMessage.qty}" >
+                                      <option *ngFor="let i of quantities" value="{{i}}"> {{ i }} </option>
+                               </select>
+                                <span class="invalid-feedback">
+                                          {{displayMessage.qty}}
+                               </span>
+                        </div>
+                  </div>
+                  <div class="row">
+                      <div class="input-field col s12 mt-2">
+                              <label class="float-left" for="number"> Number of seat </label>    
+                                 <div *ngFor="let seat of freeSeatChecker; let i = index" class="w-15 p-3 float-left" formArrayName="number" >
+                                   <input type="checkbox" name="numb[]" class="form-check-input"  id="freeSeatchecker{{i}}"  [value] = "seat.seat" (change)="onCheckboxChange($event, 'number')" /> <p> {{ seat.seat }} </p> 
+                                 </div> 
+                                 
+                              <span class="invalid-feedback">
+                                         {{displayMessage.number}}
+                              </span>
+                              {{ messageSeat }}
+                      </div>
+                </div> 
+                <div class="row">
+                     <div class="input-field col s12 mt-2">
+                          <label for="priceOfTehnology"> Price of tehnology </label>
+                          <select formControlName="priceOfTehno" class="form-control" id="resPriceOfTehno" [ngClass]="{'is-invalid': displayMessage.priceOfTehno}" >
+                                 <option *ngFor="let i of arrPricesTehno" value="{{i.price}}"> {{ i.tehnology}} - {{ i.price }} $ </option>
+                          </select>
+                           <span class="invalid-feedback">
+                                     {{displayMessage.priceOfTehno}}
+                          </span>
+                   </div>
+             </div>
+              
+                <button [disabled]="!reservationForm.valid" class="btn btn-outline-light mt-2" name="resBtn" id="resBtn" type="submit">
+                              Send
+               </button>
+        </form> 
+        <div *ngIf="message != '' ">
+               <div *ngIf="success == true " class="alert alert-success mt-3" role="alert">
+                        <p> {{ message }}  </p>
+              </div>
+               <div *ngIf="success == false " class="alert alert-danger mt-3" role="alert">
+                       <p>  {{ message }} </p> 
+              </div>
+       </div>
+   </div>
+</div>

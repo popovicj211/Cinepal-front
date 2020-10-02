@@ -1,5 +1,92 @@
+
+/*
 #footer{
-    width: 100%;
-    height: 150px;
-    background-color: rgb(124, 116, 112 , 0.5);
+    font-size: 12px;
+	color: #e4e4e4;
+    background-color: #000;
+    padding: 60px 0 0 0;
+
+}   
+#footer .footerLinks{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      align-items: flex-start;
+    }
+
+  #footer a, #footer p{
+      font-size: 15px;
+       opacity: 0.8;
+       color: #8a8d9c;
+    }
+ #footer a:hover{
+       color: #fff;
+    }
+    #footer .copyright{
+        padding: 10px;
+        -webkit-box-shadow: 0 5px 20px rgba(#fff, 0.5);
+        -moz-box-shadow: 0 5px 20px rgba(#fff, 0.5);
+         box-shadow: 0 5px 20px rgba(#fff, 0.5);
+    }
+ .tiny{
+     font-size: 17px;
+ }
+
+*/
+
+
+
+
+ #footer {
+	font-size: 12px;
+	color: #e4e4e4;
+    background-color: #000;
+    padding: 7px;
+    border-top:2px solid #ff4500; 
+}
+#footer h3
+{
+	padding-bottom: 20px ;
+	margin-bottom: 20px ;
+	border-bottom: 1px solid #403e3c;
+}
+#footer p a {
+     color: #e4e4e4;
+}
+
+#footer .list-group .list-group-item{
+     background-color: transparent !important;
+     border-bottom: 1px solid #e4e4e4 !important;
+     opacity: 0.7;
+     color: #e4e4e4;
+}
+
+#footer .list-group .list-group-item:hover {
+          color: #ff4500
+}
+
+#footer .social_icons
+{
+	margin-top: 20px;
+}
+#footer .social_icons img
+{
+	margin-right: 10px;
+}
+
+#footer .copyright a {
+    color: #ff4500;
+}
+#footer .social_icons i {
+	padding-right: 10px;
+}
+.tiny{
+    font-size: 16px;
+}
+.authorF{
+	-moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    border-radius: 50%;
+   width: 150px;
 }

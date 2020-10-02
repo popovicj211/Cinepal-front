@@ -1,3 +1,4 @@
+import { AuthGuard } from './../shared/guards/auth.guard';
 
 import { HeaderComponent } from './components/default/partials/header/header.component';
 import { SliderComponent } from './components/default/partials/slider/slider.component';
@@ -29,12 +30,16 @@ const routes: Routes = [
   {
     path: 'reservation/:id',
     component: DefaultComponent,
-    loadChildren: () => import('../reservation/reservation.module').then(mod => mod.ReservationModule)
+    loadChildren: () => import('../reservation/reservation.module').then(mod => mod.ReservationModule),
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard]
   },
   {
     path: 'admin',
     component: DefaultComponent,
-    loadChildren: () => import('../admin/admin.module').then(mod => mod.AdminModule)
+    loadChildren: () => import('../admin/admin.module').then(mod => mod.AdminModule),
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard]
   }
   
 ];

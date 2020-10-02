@@ -16,7 +16,7 @@ export class AdminComponent implements OnInit  {
     { name: 'Users', path: 'users' },
     { name: 'Movies', path: 'movies'},
     { name: 'Categories', path: 'categories'},
-
+    { name: 'Actors', path: 'actors'}
   ];
 
   constructor(){}

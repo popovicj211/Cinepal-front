@@ -24,14 +24,11 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     NgbModule,
-    SharedModule,
-    MoviesModule
+    SharedModule
   ],
   exports:[
        HomeComponent,
-       RouterModule,
-       SharedModule/*,
-       MoviesModule*/
+       RouterModule
   ]
 })
 export class HomeModule { }

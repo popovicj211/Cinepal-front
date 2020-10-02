@@ -1,9 +1,11 @@
+import { AuthGuard } from './../shared/guards/auth.guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './../shared/shared.module';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReservationComponent } from './components/reservation.component';
-import { AppRoutingModule } from '../app-routing.module';
+
 
 
 const routes: Routes = [
@@ -20,7 +22,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
      RouterModule.forChild(routes),
-     SharedModule
+     SharedModule,
+     FormsModule, 
+     ReactiveFormsModule
   ], exports:[
        ReservationComponent,
        RouterModule

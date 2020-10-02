@@ -15,11 +15,11 @@ export class CategoriesService {
   constructor(private readonly http: HttpClient) { }
 
   public getCategories(id: number = 1): Observable<IGetCategories[]> {
-    return this.http.get<IGetCategories[]>(`${this.apiUrl}/categories/${id}`);
+    return this.http.get<IGetCategories[]>(`/categories/${id}`);
   }
 
   public getTehnologies(id: number = 2): Observable<IGetCategories[]> {
-    return this.http.get<IGetCategories[]>(`${this.apiUrl}/categories/${id}`);
+    return this.http.get<IGetCategories[]>(`/categories/${id}`);
   }
 
 }

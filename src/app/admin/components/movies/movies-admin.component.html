@@ -1,10 +1,10 @@
-
-    <div class="card-body">
+   <div class="card-body">
+      <h2> Add or Update movies </h2>
          <form   (ngSubmit)="addMovie()" id="addFormMovie" name="addFormMovie" [formGroup]="addFormMovie" enctype="multipart/form-data">
 
                <div class="form-group row mb-2">
                      <label class="col-md-2 col-form-label "
-                          for="movieImage"> Movie image </label>
+                          for="addMovieImage"> Movie image </label>
                          <div class="col-md-8">
                                  <div class="custom-file">
                                       <input   formControlName = "addMovieImage"  id = "addMovieImage"   [ngClass]="{'is-invalid': displayMessage.addMovieImage}"  name = "addMovieImage" type="file" class="custom-file-input" >
@@ -18,7 +18,7 @@
 
                   <div class="form-group row mb-2">
                             <label class="col-md-2 col-form-label"
-                              for="movieName">Movie Name</label>
+                              for="addMovieName">Movie Name</label>
                              <div class="col-md-8">
                                        <input class="form-control"
                                         id = "addMovieName"
@@ -36,7 +36,7 @@
 
                    <div class="form-group row mb-2">
                            <label class="col-md-2 col-form-label"
-                           for="movieDesc">Movie Description</label>
+                           for="addMovieDesc">Movie Description</label>
                             <div class="col-md-8">
                                      <textarea  class="form-control"  id = "addMovieDesc"  name = "addMovieDesc"  placeholder = "Movie description (required)"   [ngClass]="{'is-invalid': displayMessage.addMovieDesc}"  formControlName = "addMovieDesc"  ></textarea>
                                      <span class="invalid-feedback">
@@ -47,7 +47,7 @@
 
                    <div class="form-group row mb-2">
                             <label class="col-md-2 col-form-label"
-                            for="movieYear">Year</label>
+                            for="addMovieYear">Year</label>
 
                            <div class="col-md-8">
                                    <select class="form-control"  id = "addMovieYear"   [ngClass]="{'is-invalid': displayMessage.addMovieYear}" name = "addMovieYear" formControlName="addMovieYear"  >
@@ -61,7 +61,7 @@
 
                    <div class="form-group row mb-2">
                                  <label class="col-md-2 col-form-label"
-                                  for="movieReleaseDate">Movie release date</label>
+                                  for="addMovieReldate">Movie release date</label>
                                         <div class="col-md-8 datetimerels"  >
                                                 <ngb-datepicker class="reldateAddMovie"  id = "addMovieReldate"  name = "addMovieReldate" formControlName="addMovieReldate"  #dp (navigate)="date = $event.next" ></ngb-datepicker>
                                                 <ngb-timepicker   id = "addMovieReltime" class="addMovieReltimeStyle"  name = "addMovieReltime"  formControlName="addMovieReltime"></ngb-timepicker>
@@ -72,9 +72,9 @@
                                         </div>
                  </div>  
                      
-                  <div class="form-group row mb-4">
+                  <!--<div class="form-group row mb-4">
                               <label class="col-md-1 col-form-label"
-                               for="movieGenre">Genres:</label>
+                               for="addMovieGenre">Genres:</label>
                             <div class="col-md-1" >
                            
                                   <span *ngFor="let genre of categories"  formArrayName="checkArrayGenre">
@@ -87,7 +87,7 @@
                            </div>
 
                            <label class="col-md-1 col-form-label"
-                           for="movieTehno">Tehnologies:</label>
+                           for="addMovieTehno">Tehnologies:</label>
                            <div class="col-md-1" >
                                      <span *ngFor="let tehno of tehnologies" formArrayName="checkArrayTehno">
                                              <input  type="checkbox" class="form-check-input" name="addMovieTehno[]" id="addMovieTehno{{tehno.id}}" (change)="onCheckboxChange($event, 'checkArrayTehno')"  [value]="tehno.id" > <p> {{tehno.name}} </p>
@@ -98,7 +98,7 @@
                           </div>
 
                           <label class="col-md-1 col-form-label"
-                          for="movieActor">Actors:</label>
+                          for="addMovieActor">Actors:</label>
 
                          <div class="col-md-1" >
                                    <span *ngFor="let actor of actors" formArrayName="checkArrayActor">
@@ -107,13 +107,74 @@
                                    <span class="invalid-feedback">
                                                {{displayMessage.checkArrayActor}}
                                     </span>
+                            
+                        
                         </div>
 
-                  </div>  
+                  </div>-->  
                     <div class="form-group row mb-2"> 
                                     <button type="submit" name="addMoveBtn" id="addMoveBtn"  [title]="addFormMovie.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!addFormMovie.valid" class="btn btn-outline-light" > Save </button>
                    </div>
 
        </form>
+          <div class="table admintable">
+                <table>
+                        <tr>
+                               <th> # </th> 
+                               <th> Image </th> 
+                               <th> Name  </th>   
+                               <th> Description </th> 
+                                <th> Release date </th> 
+                                <th> Running time </th>
+                                <th> Year  </th>
+                                <th> Prices </th>
+                                <th> Categories </th>
+                                <th> Tehnologies </th>
+                                <th> Actors </th>
+                                <th> Edit </th>
+                                <th>  Delete </th>
+                        </tr>
+                         <tr *ngFor="let movie of allMovies; let i = index">
+                                  <td> {{ i+1 }} </td>
+                                  <td>  <img src="{{imgUrl + '' + movie.img}}" alt="{{movie.name}}"/>  </td>
+                                  <td> {{ movie.name }} </td>
+                                  <td> <p class="admindesc">{{ movie.desc }} </p> </td>
+                                  <td> {{ movie.rel | date: 'dd/MM/yyyy H:m'  }} </td>
+                                  <td> <span class="dateMv"> {{ movie.runtime }} </span> </td>
+                                  <td> <span class="dateMv">  {{ movie.year }} </span> </td>
+                                  <td>  <ul>
+                                        <li *ngFor="let price of movie.price | keyvalue" value="{{price.value}}"> {{price.value | currency:"USD":"symbol" }} </li>
+                                  </ul> </td>
+                                  <td>  <ul>
+                                           <li *ngFor="let cat of movie.categories | keyvalue" value="{{cat.value}}"> {{cat.value }} </li>
+                                  </ul> </td>
+                                  <td>  <ul>
+                                        <li *ngFor="let cat of movie.tehnologies | keyvalue" value="{{cat.value}}"> {{cat.value }} </li>
+                               </ul> </td>
+                               <td>  <ul>
+                                            <li *ngFor="let actor of movie.actors | keyvalue" value="{{actor.value}}"> {{actor.value }} </li>
+                                     </ul> 
+                                </td>
+                                  <td>
+                                        <button class="btn btn-outline-primary btn-sm"
+                                               >
+                                          Edit
+                                        </button>
+                                  </td>
+                                  <td>
+                                        <button class="btn btn-outline-primary btn-sm"
+                                               >
+                                          Delete
+                                        </button>
+                                 </td>
+                         </tr>
+                </table>    
+                <div *ngIf="error != ''" class="alert alert-danger mx-auto my-5 " role="alert">
+                        {{ error }} 
+                 </div>
+          </div>
+          <ul class="pagination justify-content-center" >
+                <li class="page-item" *ngFor="let item of counter(page); let i = index"><a class="page-link colorWhite"  (click)="Paginate(i+1)"  routerLink="/admin/movies/page/{{i+1}}"   > {{ i + 1 }} </a></li>
+          </ul>
      </div>
   

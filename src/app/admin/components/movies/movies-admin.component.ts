@@ -1,4 +1,7 @@
-import { Component, OnInit ,  AfterViewInit , ViewChildren , ElementRef } from '@angular/core';
+import { MappingObjToArr } from './../../../shared/helper/mappingObjToArr';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
+import { Component, OnInit, AfterViewInit, ViewChildren, ElementRef, OnDestroy } from '@angular/core';
 import { FormGroup , FormControl, Validators , FormBuilder, FormArray , FormControlName } from '@angular/forms' 
 import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 import { ValidationMessage } from './../../../shared/helper/validation-message'
@@ -16,9 +19,14 @@ import { Link } from './../../../shared/models/IGetLinks';
   templateUrl: './movies-admin.component.html',
   styleUrls: ['./movies-admin.component.css']
 })
-export class MoviesAdminComponent implements OnInit , AfterViewInit {
+export class MoviesAdminComponent implements OnInit , AfterViewInit , OnDestroy {
+  //Called once, before the instance is destroyed.
+  //Add 'implements OnDestroy' to the class.
+  
+
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
+  private subscriptions: Array<Subscription> = new Array<Subscription>();
 
   public readonly years = [
     { id: 1 , year: 2020},
@@ -37,23 +45,34 @@ export class MoviesAdminComponent implements OnInit , AfterViewInit {
      ]
 
 
-  public displayMessage: { [key: string]: string } = {};
-  public categories: IGetCategories[];   
-  public tehnologies: IGetCategories[];
-   public addFormMovie: FormGroup
- public submitted: boolean = false 
+   displayMessage: { [key: string]: string } = {};
+   categories: IGetCategories[];   
+   tehnologies: IGetCategories[];
+    addFormMovie: FormGroup
+  submitted: boolean = false 
  private validationMessages: {[key: string]: { [key: string]: string }}
  model: NgbDateStruct;
  date: {year: number, month: number}
  time = {hour: 13, minute: 30};
- 
+  error: string = ''
+  allMovies: IGetMovies[];
+  imgUrl: string;
+  perPage: number = 4;
+  page: number
+  catPageId: number = 1;
  private genericValidator: ValidationMessage;
+/*
+ get movieActors(): FormArray {
+  return this.addFormMovie.get('movieActors') as FormArray;
+ }*/
 
   constructor(
     private movieService: MoviesService,
     private calendar: NgbCalendar,
     private categoryService: CategoriesService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private readonly titleService: Title/*,
+    private readonly serviceActors*/
   ) { 
 
     this.validationMessages = {
@@ -78,7 +97,7 @@ export class MoviesAdminComponent implements OnInit , AfterViewInit {
        },
        addMovieYear:{
         required: 'Year of movie is required.'
-       },
+       }/*,
        checkArrayGenre:{
            required: 'Genre of movie is required.'
        },
@@ -87,7 +106,7 @@ export class MoviesAdminComponent implements OnInit , AfterViewInit {
       },
       checkArrayActor:{
         required: 'Actor of movie is required.'
-      }
+      }*/
     }; 
 
      
@@ -106,10 +125,11 @@ export class MoviesAdminComponent implements OnInit , AfterViewInit {
          ]], 
          addMovieReldate: ['',  Validators.required],
          addMovieReltime: ['', Validators.required],
-         addMovieYear: ['', Validators.required],
+         addMovieYear: ['', Validators.required]/*,
           checkArrayGenre: this.fb.array([] ,[ Validators.required]),
           checkArrayTehno: this.fb.array([] ,[ Validators.required]),
-          checkArrayActor: this.fb.array([] ,[ Validators.required])
+          checkArrayActor: this.fb.array([] ,[ Validators.required]),
+            movieActors: this.fb.array([] ,[ Validators.required])*/
     })
 
 
@@ -122,16 +142,67 @@ export class MoviesAdminComponent implements OnInit , AfterViewInit {
   }
 
   ngOnInit(): void {
-      this.categoryService.getCategories().subscribe(data => {
-                    
+    this.titleService.setTitle("Cinepal | Admin Panel - Movies");
+     
+
+    this.imgUrl = this.movieService.urlImg; 
+
+
+     this.subscriptions.push(
+     /* this.categoryService.getCategories().subscribe(data => {
+        setTimeout(() => {         
       this.categories = data;
-      console.log(this.categories)
-     })
+        }, 500);
+     }, (error: HttpErrorResponse) => {
+      this.error = error.status + " " + error.statusText;
+      
+      }),
       this.categoryService.getTehnologies().subscribe(data => {
+        setTimeout(() => {   
        this.tehnologies = data;
-     console.log(this.tehnologies)
+        },500);
+    }, (error: HttpErrorResponse) => {
+      this.error = error.status + " " + error.statusText;
+      
+      }),*/ this.movieService.getAllMovies(this.perPage , this.catPageId).subscribe( data => {
+        setTimeout(() => {
+      this.allMovies = data['data'];  
+      const pag = Math.ceil(data['count'] / this.perPage)  
+            console.log(pag)
+          this.page = pag;
+        
+        }, 500);
+             
+     }, (error: HttpErrorResponse) => { 
+        this.error = error.status + " " + error.statusText;
+         if(error.status == 404){ 
+                 this.error = "No movies" 
+          }
+
     })
+     )
+
   }
+
+  Paginate(page){
+    this.catPageId = page;
+    this.movieService.getAllMovies(this.perPage , this.catPageId).subscribe( data => {
+      setTimeout(() => {
+    this.allMovies = data['data'];  
+     const pag = Math.ceil(data['count'] / this.perPage)  
+        this.page = pag;
+      }, 500);
+           
+}, (error: HttpErrorResponse) => {
+this.error = error.status + " " + error.statusText;
+if(error.status == 404){
+this.error = "No movies" 
+}
+
+})
+
+
+   }
 
   ngAfterViewInit(): void {
     const controlBlurs: Observable<any>[] = this.formInputElements
@@ -176,6 +247,12 @@ addMovie(){
  //  console.log(this.form.value)
 }
 
+ngOnDestroy(): void {
+  this.subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
+}
 
+counter(i: number) {
+  return new Array(i);
+  }
 
 }

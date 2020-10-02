@@ -32,12 +32,12 @@
                             <span class="optionCat"> {{ cat.value }} </span>
                        </div>
                         <div class="details">
-                                <a routerLink="/movie/{{movie.id}}"> Details </a>
+                                <a routerLink="/movies/movie/{{movie.id}}"> Details </a>
                         </div>
                  </div> 
                 </div> 
                 <ul class="pagination justify-content-center" >
-                     <li class="page-item" *ngFor="let item of counter(page); let i = index"><a class="page-link colorWhite" routerLink="/movies/page/{{i+1}}"> {{ i + 1 }} </a></li>
+                     <li class="page-item" *ngFor="let item of counter(page); let i = index"><a class="page-link colorWhite"  (click)="Paginate(i+1)"  routerLink="/movies/page/{{i+1}}"   > {{ i + 1 }} </a></li>
                </ul>
            </div>      
    </div> 

@@ -12,11 +12,11 @@ const routes: Routes = [
        {
       path: '' , component: MoviesComponent , children:[
            { path: 'categories/:id' ,component: MoviesComponent},
-           { path: 'page/:page' , component: MoviesComponent }  
+           { path: 'page/:page' , component: MoviesComponent   }  
        ]
       },
       {
-        path: 'movie/:id' , component: MoviesDetailsComponent
+        path: 'movie/:detail' , component: MoviesDetailsComponent
       }
       
     /*   {path: '' , component: MoviesComponent },
@@ -31,10 +31,12 @@ const routes: Routes = [
   declarations: [MoviesComponent, MoviesDetailsComponent],
   imports: [
     CommonModule,
-   RouterModule.forChild(routes) 
+   RouterModule.forChild(routes) ,
+   SharedModule
   ],exports:[
       MoviesComponent,
-      RouterModule
+      RouterModule,
+      MoviesDetailsComponent
   ]
 })
 export class MoviesModule { }

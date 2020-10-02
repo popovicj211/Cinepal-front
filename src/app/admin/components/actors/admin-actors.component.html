@@ -1,0 +1,75 @@
+ <div class="card-body">
+        <h2> Add or Update actors </h2>
+    <form   (ngSubmit)="addformAc()" id="addFormActor" name="addFormActor" [formGroup]="addFormActor">
+          <div class="form-group row mb-2">
+            <label class="col-md-2 col-form-label "
+                 for="addActor"> Actors: </label>
+                <div class="col-md-8">
+          
+                        <div formArrayName="addActor">
+                            <div class="form-group row mb-2"
+                                 *ngFor="let tag of addActor.controls; let i=index">
+                              <label class="col-md-2 col-form-label"
+                                     [attr.for]="i">Add actor {{i+1}}</label>
+                    
+                              <div class="col-md-8">
+                                <input class="form-control"
+                                       [id]="i"
+                                       type="text"
+                                       placeholder="Actor"
+                                       [formControlName]="i" />
+                              </div>
+                              <button class="col-md-1 btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Delete textbox for actor"
+                                      (click)="deleteAct(i)">Delete textbox
+                              </button>
+                          </div>
+                     </div>
+                     <div class="row">
+                            <div class="col-md-2 mb-2">
+                              <button class="btn btn-outline-primary btn-sm"
+                                      type="button"
+                                      title="Add textbox for actor"
+                                      (click)="addAct()">Add textbox
+                              </button>
+                            </div>
+                    </div>
+                </div>
+          </div>
+             
+               <div class="form-group row mb-2"> 
+                               <button type="submit" name="addActorBtn" id="addActorBtn"  [title]="addFormActor.valid ? 'Save your entered data' : 'Disabled until the form data is valid'" [disabled]="!addFormActor.valid" class="btn btn-outline-light" > Save </button>
+              </div>
+
+  </form>
+     <div class="table admintable">
+           <table class="mx-auto">
+                   <tr>
+                          <th> # </th> 
+                          <th> Actors </th> 
+                           <th> Edit </th>
+                           <th>  Delete </th>
+                          
+                   </tr>
+                    <tr *ngFor="let actor of actors; let i = index">
+                                 <td> {{i+1 }} </td>
+                                 <td> {{ actor.name }} </td>
+                                 <td>    <button class="btn btn-outline-primary btn-sm">
+                               Edit
+                             </button> </td>
+                                 <td>    <button class="btn btn-outline-primary btn-sm">
+                               Delete
+                             </button>  </td>
+                    </tr>
+           </table>    
+           <div *ngIf="error != ''" class="alert alert-danger mx-auto my-5 " role="alert">
+                   {{ error }} 
+            </div>
+     </div>
+     <ul class="pagination justify-content-center" >
+        <li class="page-item" *ngFor="let item of counter(page); let i = index"><a class="page-link colorWhite"  (click)="Paginate(i+1)"  routerLink="/admin/actors/page/{{i+1}}"   > {{ i + 1 }} </a></li>
+    </ul>
+  </div>
+
+

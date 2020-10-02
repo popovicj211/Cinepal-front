@@ -5,7 +5,7 @@
      <form class="col s12" [formGroup]="registerForm" (ngSubmit)="register();">
          <div class="row">
                 <div class="input-field col s12 mt-2">
-                        <label for="name">First name and Last name</label>
+                        <label for="regName">First name and Last name</label>
                       <input formControlName="name" class="form-control" id="regName" type="text" [ngClass]="{'is-invalid': displayMessage.name}">
                       <span class="invalid-feedback">
                                     {{displayMessage.name}}
@@ -14,7 +14,7 @@
        </div>
         <div class="row">
              <div class="input-field col s12 mt-2">
-                     <label for="username">Username</label>
+                     <label for="regUsername">Username</label>
                      <input formControlName="username" class="form-control" id="regUsername" type="text" [ngClass]="{'is-invalid': displayMessage.username}" >
                     <span class="invalid-feedback">
                                {{displayMessage.username}}
@@ -23,7 +23,7 @@
       </div>
       <div class="row">
             <div class="input-field col s12 mt-2">
-                    <label for="email">Email address</label>
+                    <label for="regEmail">Email address</label>
                    <input formControlName="email" class="form-control" id="regEmail" type="text" [ngClass]="{'is-invalid': displayMessage.email}" >
                    <span class="invalid-feedback">
                               {{displayMessage.email}}
@@ -32,7 +32,7 @@
       </div>
       <div class="row">
            <div class="input-field col s12 mt-2">
-                <label for="password">Password</label>
+                <label for="regPassword">Password</label>
                  <input formControlName="password" class="form-control" id="regPassword" type="password" [ngClass]="{'is-invalid': displayMessage.password}" >
                  <span class="invalid-feedback">
                              {{displayMessage.password}}

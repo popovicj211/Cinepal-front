@@ -19,7 +19,7 @@ export class MoviesDetailsComponent implements OnInit  {
   private error: string;
   public urlImg: string;  
   public imgUrl: string;
-
+  
   private  mappingCat: MappingObjToArr;
   private  mappingTehno: MappingObjToArr;
   private  mappingActors: MappingObjToArr;
@@ -37,11 +37,12 @@ export class MoviesDetailsComponent implements OnInit  {
   ngOnInit(): void {
     this.titleService.setTitle("Cinepal | Movie details");
     setTimeout(() => {
-      const id = +this.route.snapshot.params['id'];  
+      const id = +this.route.snapshot.params['detail'];  
       this.imgUrl = this.moviesService.urlImg
       this.moviesService.getMovieDetail(id).subscribe( data => {
         this.movie = data;  
         this.urlImg = this.imgUrl + "" + this.movie.img
+      
            const mappingArr = [
                    this.movie.categories, this.movie.tehnologies, this.movie.actors, this.movie.price
            ];

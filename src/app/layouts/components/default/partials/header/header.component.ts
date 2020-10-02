@@ -36,7 +36,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   ]
 })
 export class HeaderComponent implements OnInit {
-
+        public showSlider: boolean;
+        public auth: boolean;
 
   public readonly links: Link[] = [
     { name: 'Home', path: '/' },
@@ -60,11 +61,30 @@ export class HeaderComponent implements OnInit {
        this.state = $tf 
 }
 
+   
 
-  constructor(private route: Router) { }
+  constructor(private router: Router) { }
+
+  Logout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.router.navigate(['/auth/signin']);
+      }
+    
 
   ngOnInit(): void {
-       //  this.route.url === '/home'
+       if(this.router.url == '/'){
+        this.showSlider = true
+     }else{
+       this.showSlider = false
+     }
+
+      if(JSON.parse(localStorage.getItem('user')) == null){
+                  this.auth = true 
+      }else{
+                 this.auth = false
+      }
+
      
   }
 

@@ -100,7 +100,7 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
           (res: LoginResponse ) => {
             this.showSpinner = true;
             localStorage.setItem("token", res.token.access_token);
-          //  localStorage.setItem("user", JSON.stringify(res.user));
+            localStorage.setItem("user", JSON.stringify(res.user.original));
 
             // @ts-ignore
          //   to.toast({ html: "Welcome back " + res.user.name, displayLength: 1750 });
@@ -110,7 +110,8 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
             console.log("Login is successfully")
             this.success = true;
             debounceTime(800)
-            }, 2500);
+            this.router.navigateByUrl("/movies");
+            }, 1500);
           },
           (error: HttpErrorResponse) => {
         
@@ -121,11 +122,6 @@ export class LoginComponent implements OnInit, AfterViewInit, OnDestroy {
                this.message = this.error
                this.success = false;
           }
-        ),
-        this.authService.me().subscribe(
-                  (data: UserInfo) => {
-                    localStorage.setItem("user", JSON.stringify(data));         
-                  }   
         )
       );
     }
