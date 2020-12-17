@@ -15,4 +15,13 @@ export class MappingObjToArr {
         const mapped = Object.keys(obj).map(key => ({type: key, value: obj[key]}));
          return mapped;     
       }*/
+      public defaultPropertyChecked( isChecked) {
+          this.obj.map((obj) => {
+            obj.checked = isChecked;
+            return obj;
+          })
+      }
+
+
+    
 }

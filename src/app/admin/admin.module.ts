@@ -9,7 +9,7 @@ import { AdminCategoriesComponent } from './components/categories/admin-categori
 import { MoviesAdminComponent } from './components/movies/movies-admin.component';
 import { AdminActorsComponent } from './components/actors/admin-actors.component';
 import { AdminPricesComponent } from './components/prices/admin-prices.component';
-
+import {  RxReactiveFormsModule } from "@rxweb/reactive-form-validators"
 
 const routes: Routes = [
          {
@@ -24,9 +24,10 @@ const routes: Routes = [
                   component: AdminUsersComponent  
                },
                {
-                path: 'users/edit/:id',
+                path: 'users/:id',
                 component: AdminUsersComponent
               },
+          
               {
                 path: 'movies',
                 component: MoviesAdminComponent
@@ -35,7 +36,11 @@ const routes: Routes = [
                  path: 'movies/page/:page' ,
                   component: MoviesAdminComponent   
                }
-              ,
+               ,
+               {
+                path: 'movies/:id',
+                component: MoviesAdminComponent
+              },
               {
                 path: 'categories',
                 component: AdminCategoriesComponent
@@ -59,7 +64,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [AdminComponent, AdminUsersComponent, AdminCategoriesComponent, MoviesAdminComponent, AdminActorsComponent, AdminPricesComponent],
   imports: [
-    CommonModule , NgbModule  , FormsModule  , ReactiveFormsModule , RouterModule.forChild(routes)
+    CommonModule , NgbModule  , FormsModule  , ReactiveFormsModule , RouterModule.forChild(routes) , RxReactiveFormsModule
   ],exports:[
       AdminComponent, 
       RouterModule

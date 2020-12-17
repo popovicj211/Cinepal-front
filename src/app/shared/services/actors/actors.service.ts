@@ -15,7 +15,7 @@ export class ActorsService {
   public getActors(perPage:number , page:number | null): Observable<IGetActors[]> {
     if(isNaN(page)){
       return this.http.get<IGetActors[]>(`/auth/actors?perPage=${perPage}`);
-     }else if(page&&perPage){
+     }else if(page != null && perPage != 0){
       return this.http.get<IGetActors[]>(`/auth/actors?perPage=${perPage}&page=${page}`);
      }else{
       return this.http.get<IGetActors[]>(`/auth/actors`);

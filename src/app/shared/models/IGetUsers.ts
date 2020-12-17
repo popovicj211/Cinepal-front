@@ -55,4 +55,20 @@ export interface me{
     name: string;
     username: string;
     email: string;
+    role: Object;
+  }
+
+
+  export interface addUser {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+    password: string;
+    role: number;
+  }
+
+
+  export interface addUserResponse {
+    message: string;
   }

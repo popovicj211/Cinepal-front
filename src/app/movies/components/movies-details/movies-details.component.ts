@@ -41,11 +41,7 @@ export class MoviesDetailsComponent implements OnInit  {
       this.imgUrl = this.moviesService.urlImg
       this.moviesService.getMovieDetail(id).subscribe( data => {
         this.movie = data;  
-        this.urlImg = this.imgUrl + "" + this.movie.img
-      
-           const mappingArr = [
-                   this.movie.categories, this.movie.tehnologies, this.movie.actors, this.movie.price
-           ];
+        this.urlImg = this.imgUrl + "" + this.movie.img['link']
            this.mappingCat = new MappingObjToArr(this.movie.categories);
           this.categories = this.mappingCat.MapingObj();
           this.mappingTehno = new MappingObjToArr(this.movie.tehnologies);
@@ -54,6 +50,7 @@ export class MoviesDetailsComponent implements OnInit  {
           this.actors = this.mappingActors.MapingObj();
           this.mappingPrices = new MappingObjToArr(this.movie.price);
           this.prices = this.mappingPrices.MapingObj();
+       
        
 
         console.log(this.movie)                 
@@ -74,6 +71,12 @@ export class MoviesDetailsComponent implements OnInit  {
   MapingObj(obj: Object){
     const mapped = Object.keys(obj).map(key => ({type: key, value: obj[key]}));
      return mapped;     
+  }*/
+
+   /* getDetailsCat(cat){
+    const mappingCat = new MappingObjToArr(cat);
+   const categories = mappingCat.MapingObj();
+  return categories
   }*/
 
 }

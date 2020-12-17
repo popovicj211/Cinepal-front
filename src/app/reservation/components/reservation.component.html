@@ -28,7 +28,7 @@
                       <div class="input-field col s12 mt-2">
                               <label class="float-left" for="number"> Number of seat </label>    
                                  <div *ngFor="let seat of freeSeatChecker; let i = index" class="w-15 p-3 float-left" formArrayName="number" >
-                                   <input type="checkbox" name="numb[]" class="form-check-input"  id="freeSeatchecker{{i}}"  [value] = "seat.seat" (change)="onCheckboxChange($event, 'number')" /> <p> {{ seat.seat }} </p> 
+                                   <input type="checkbox" name="numb[]" class="form-check-input"  id="freeSeatchecker{{i}}"  [value] = "seat.id" (change)="onCheckboxChange($event, 'number')" /> <p> {{ seat.number }} </p> 
                                  </div> 
                                  
                               <span class="invalid-feedback">

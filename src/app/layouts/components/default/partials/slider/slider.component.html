@@ -4,12 +4,12 @@
                       <h2>  </h2>
          </div>
 
-   <ngb-carousel *ngIf="slides">
-    <ng-template ngbSlide *ngFor="let img of slides">
+   <ngb-carousel *ngIf="slides" >
+    <ng-template ngbSlide *ngFor="let img of slides" >
       <div class="picsum-img-wrapper">
         <img src="assets/images/{{img.img}}" alt="{{ img.header}}">
       </div>
-      <div class="carousel-caption slider-block">
+      <div class="carousel-caption slider-block ">
         <h2>{{ img.header}}</h2>
        <p class="styleText"> {{ img.text }} </p>
       </div>

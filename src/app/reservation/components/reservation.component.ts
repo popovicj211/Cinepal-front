@@ -63,12 +63,7 @@ public arrSeat: number[] = [];
   ) {
   
     this.validationMessages = {
-      /*  movieId:{
-           required: 'Movie is required.'
-        },
-        qty: {
-         required: 'Quantity is required.'
-       },*/
+
        number: {
          required: 'Number of seat is required.',
        },
@@ -100,23 +95,21 @@ public arrSeat: number[] = [];
   ngOnInit(): void {
 
     this.titleService.setTitle('Cinepal | Reservation');
+    this.subscriptions.push(
     this.seatcheckerService.getSeatchecker(1).subscribe( (res: GetSeatchecker[]) => {
 
       setTimeout(() =>{
           this.freeSeatChecker = res; 
             console.log(this.freeSeatChecker)
       }, 500)          
-})
-
+}),
 this.moviesService.getAllMovies(null , null).subscribe( (res: IGetMovies[]) => {
   setTimeout(() =>{
       this.movies = res['data']; 
         console.log(this.movies)
   }, 500)          
-})
-
-
-this.moviesService.getPrices(this.movieIdValue).subscribe(res => {
+}),
+this.moviesService.getMovieDetail(this.movieIdValue).subscribe(res => {
        setTimeout(() => {
             const arrPrices =  Object.values(res['price']);
             const arrTehno =  Object.values(res['tehnologies']);
@@ -125,9 +118,9 @@ this.moviesService.getPrices(this.movieIdValue).subscribe(res => {
               }
                     console.log(this.arrPricesTehno)
           },500) 
-}); 
+}) 
 
-
+    );
 
 
   }
@@ -174,57 +167,29 @@ this.moviesService.getPrices(this.movieIdValue).subscribe(res => {
     if (this.reservationForm.valid) {
       const free = 1;
       const reserved = 0;
-      const dataSeatChecker = { seat: this.arrSeat , free: reserved }
+      const dataSeatChecker = { number: this.arrSeat , free: reserved }
      const data: SendReservation = this.reservationForm.getRawValue();
-        this.subscriptions.push(
         this.reservationService.sendReservation(data).subscribe(
           (res: ResResponse) => {
             this.reservationForm.reset();
                 this.message = res.message
                 console.log("Reservation data is successfully send")
                 this.success = true;
-            /*    const free = 1;
-                const reserved = 0;
-                const dataSeatChecker = { seat: this.arrSeat , free: reserved }*/
-             
+        //   this.updateSeat( free, dataSeatChecker);
           },
           (error: HttpErrorResponse) => {
             this.error = error.status + " " + error.statusText;
              this.message = this.error
              this.success = false;
-          }
-        ), this.seatcheckerService.updateSeatchecker(free, dataSeatChecker).subscribe(
-          (res) => {
-                  this.messageSeat = "Seat checker is successfully updated!";
-          },
-          (error: HttpErrorResponse) => {
-            this.error = error.status + " " + error.statusText;
-             this.message = this.error
-             this.success = false;
-          }
-        )
-
-      );
-    /*  this.reservationForm.reset();
-      const free = 1;
-      const reserved = 0;
-      const dataSeatChecker = { seat: this.arrSeat , free: reserved }
-     this.seatcheckerService.updateSeatchecker(free, dataSeatChecker).subscribe(
-      (res: ResResponse) => {
-      
-            this.message = res.message
-            this.success = true;
-            console.log("Checker seat data is successfully updated")
-      },
-      (error: HttpErrorResponse) => {
-        this.error = error.status + " " + error.statusText;
-         this.message = this.error
-         this.success = false;
-      }
-     )*/
-
+          });
     }
   }
+/*
+  updateSeat(reserved: number, data){
+      this.seatcheckerService.updateSeatchecker(reserved ,data).subscribe(res => {
+        console.log("Seat data is successfully updated")
+      });
+  }*/
 
   selected(){
     console.log(this.selectedLevel)

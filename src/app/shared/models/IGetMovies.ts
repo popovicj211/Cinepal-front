@@ -25,3 +25,36 @@ export interface IGetMovies{
    actors: string;
    price: number;
 }
+
+export interface addMovie{
+    id:number;
+    addMovieName: string;
+    addMovieDesc: string;
+    addMovieReldate:string;
+    addMovieReltime:string;
+    addMovieRuntime: number;
+    addMovieImage: Object;
+    addMovieYear: number;
+    checkArrayTehno: number[];
+    checkArrayGenre: number[];
+    checkArrayActor: number[];
+}
+
+export interface updateMovie{
+    id:number;
+    img: {id: number , link: string};
+    addMovieName: string;
+    addMovieDesc: string;
+    addMovieReldate:string;
+    addMovieReltime:string;
+    addMovieRuntime: number;
+    addMovieImage: Object;
+    addMovieYear: number;
+    checkArrayTehno: number[];
+    checkArrayGenre: number[];
+    checkArrayActor: number[];
+}
+
+export interface addMovieResponse {
+    message: string;
+    }

@@ -4,6 +4,6 @@ export interface SendSeatchecker {
 
 export interface GetSeatchecker {
     id: number;
-    seat: number;
+    number: number;
     free: number;
 }

@@ -12,6 +12,33 @@ body {
    color: #f8f8ff;
  } 
 
+.btn-primary{
+  background-color: #fa2837;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover{
+  background-color: #000;
+  color: #fa2837;
+  border: none;
+}
+.btn-primary:visited{
+  background-color: #fa2837 ;
+  color: #000 ;
+  border: none;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+.btn-secondary:hover {
+  color: #fa2837;
+  background-color: #000;
+}
+
 a {
     text-decoration: none;
     color: #000;
@@ -213,4 +240,12 @@ h1,h2,h3,h4,h5{
 }
 .card-body{
     padding: 20px !important;
+}
+
+.adminMoviesChb{
+     margin-top: 250px;
+     height: 300px;
+}
+.adminMoviesChb .modal-content .modal-body p {
+  color: #ff4500;
 }
